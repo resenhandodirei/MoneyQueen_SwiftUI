@@ -10,7 +10,7 @@ struct LoginOptionsView: View {
     var body: some View {
         ZStack {
             // Fundo em gradiente rosa
-            LinearGradient(gradient: Gradient(colors: [Color("wine"), Color("lightPink")]),
+            LinearGradient(gradient: Gradient(colors: [Color("darkPink")]),
                            startPoint: .topLeading,
                            endPoint: .bottomTrailing)
                 .ignoresSafeArea()
@@ -64,7 +64,7 @@ struct LoginOptionsView: View {
                     }
                     .padding()
                     .frame(maxWidth: .infinity)
-                    .background(Color("darkPink"))
+                    .background(Color("pink"))
                     .cornerRadius(12)
                     .shadow(radius: 5)
                 }
@@ -86,7 +86,7 @@ struct LoginOptionsView: View {
                     }
                     .padding()
                     .frame(maxWidth: .infinity)
-                    .background(Color("wine"))
+                    .background(Color("lightPink"))
                     .cornerRadius(12)
                     .shadow(radius: 5)
                 }

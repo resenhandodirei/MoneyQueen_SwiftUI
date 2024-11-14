@@ -13,7 +13,7 @@ struct StartView: View {
     var body: some View {
         ZStack {
             // Gradiente de fundo
-            LinearGradient(gradient: Gradient(colors: [Color("wine"), Color("lightPink")]),
+            LinearGradient(gradient: Gradient(colors: [Color("darkPink")]),
                            startPoint: .topLeading,
                            endPoint: .bottomTrailing)
                 .ignoresSafeArea()
@@ -45,10 +45,10 @@ struct StartView: View {
                     Text("Acessar")
                         .font(.title2)
                         .fontWeight(.semibold)
-                        .foregroundColor(.white)
+                        .foregroundColor(.darkPink)
                         .padding()
                         .frame(maxWidth: .infinity)
-                        .background(Color("darkPink"))
+                        .background(Color("nude"))
                         .cornerRadius(12)
                         .shadow(radius: 5)
                         .textCase(.lowercase)
