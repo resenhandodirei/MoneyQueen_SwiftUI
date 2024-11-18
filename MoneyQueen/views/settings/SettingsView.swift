@@ -24,9 +24,13 @@ struct SettingsView: View {
                 Section(header: Text("Conta e Privacidade")) {
                     Toggle(isOn: $privacyModeEnabled) {
                         Label("Modo Privado", systemImage: "lock.fill")
+                            .foregroundColor(Color("darkPink")) // Cor do ícone
                     }
+                    .toggleStyle(SwitchToggleStyle(tint: Color("darkPink"))) // Cor do Toggle
+                    
                     NavigationLink(destination: PrivacySettingsView()) {
                         Label("Configurações de Privacidade", systemImage: "shield.fill")
+                            .foregroundColor(Color("darkPink")) // Cor do ícone
                     }
                 }
                 
@@ -34,14 +38,19 @@ struct SettingsView: View {
                 Section(header: Text("Notificações")) {
                     Toggle(isOn: $notificationsEnabled) {
                         Label("Notificações", systemImage: "bell.fill")
+                            .foregroundColor(Color("darkPink")) // Cor do ícone
                     }
+                    .toggleStyle(SwitchToggleStyle(tint: Color("darkPink"))) // Cor do Toggle
                 }
                 
                 // Seção de Preferências de Aparência
                 Section(header: Text("Aparência")) {
                     Toggle(isOn: $darkModeEnabled) {
                         Label("Modo Escuro", systemImage: "moon.fill")
+                            .foregroundColor(Color("darkPink")) // Cor do ícone
                     }
+                    .toggleStyle(SwitchToggleStyle(tint: Color("darkPink"))) // Cor do Toggle
+                    
                     Picker("Cor do Tema", selection: $selectedThemeColor) {
                         ForEach(themeColors, id: \.self) { color in
                             Text(color.capitalized)
@@ -63,12 +72,15 @@ struct SettingsView: View {
                 Section(header: Text("Sobre")) {
                     NavigationLink(destination: AboutView()) {
                         Label("Sobre o Money Queen", systemImage: "info.circle.fill")
+                            .foregroundColor(Color("darkPink")) // Cor do ícone
                     }
                     NavigationLink(destination: HelpView()) {
                         Label("Ajuda", systemImage: "questionmark.circle.fill")
+                            .foregroundColor(Color("darkPink")) // Cor do ícone
                     }
                     NavigationLink(destination: LegalInfoView()) {
                         Label("Informações Legais", systemImage: "doc.text.fill")
+                            .foregroundColor(Color("darkPink")) // Cor do ícone
                     }
                 }
                 

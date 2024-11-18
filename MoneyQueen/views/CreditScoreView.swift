@@ -29,6 +29,10 @@ struct CreditScoreView: View {
                 // Indicador de Score de Crédito
                 CreditScoreIndicator(creditScore: creditScore, maxScore: maxScore)
                     .padding(.vertical, 20)
+
+                // Análise personalizada do score
+                CreditScoreAnalysis(creditScore: creditScore)
+                    .padding(.vertical, 20)
                 
                 // Dicas para melhorar o Score
                 VStack(alignment: .leading, spacing: 15) {
@@ -42,11 +46,10 @@ struct CreditScoreView: View {
                     TipRow(tip: "Monitore seu score regularmente.")
                 }
                 .padding()
-                
+
                 Spacer()
             }
             .padding()
-//            .navigationTitle("Score de Crédito")
         }
     }
 }
@@ -110,6 +113,73 @@ struct TipRow: View {
                 .font(.body)
                 .foregroundColor(.primary)
                 .multilineTextAlignment(.leading)
+        }
+    }
+}
+
+// Componente para análise personalizada do score
+struct CreditScoreAnalysis: View {
+    var creditScore: Int
+    
+    var body: some View {
+        VStack(spacing: 20) {
+            Text("Análise do Seu Score")
+                .font(.headline)
+                .foregroundColor(Color("darkPink"))
+            
+            // Texto de Feedback baseado no Score
+            Text(analysisText)
+                .font(.body)
+                .foregroundColor(.primary)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal)
+            
+            // Sugestões de Melhoria
+            VStack(alignment: .leading, spacing: 10) {
+                Text("Ações para Melhorar Seu Score")
+                    .font(.subheadline)
+                    .foregroundColor(Color("darkPink"))
+                
+                ForEach(suggestions, id: \.self) { suggestion in
+                    Text("• \(suggestion)")
+                        .font(.body)
+                        .foregroundColor(.primary)
+                }
+            }
+            .padding(.horizontal)
+        }
+        .padding()
+    }
+    
+    // Determina a análise do score
+    private var analysisText: String {
+        switch creditScore {
+        case 0..<580:
+            return "Seu score está abaixo da média, o que pode dificultar a aprovação de crédito. É importante tomar medidas para melhorar."
+        case 580..<670:
+            return "Seu score está na média, mas ainda há espaço para melhorar. Concentre-se em reduzir suas dívidas."
+        case 670..<740:
+            return "Seu score é bom, mas pode ser melhorado ainda mais. Continue mantendo os pagamentos em dia!"
+        case 740..<800:
+            return "Excelente score! Você tem um bom histórico de crédito. Tente manter esse padrão."
+        default:
+            return "Parabéns! Seu score está ótimo e acima da média. Você está muito bem em termos de crédito."
+        }
+    }
+    
+    // Sugestões baseadas no score
+    private var suggestions: [String] {
+        switch creditScore {
+        case 0..<580:
+            return ["Pague suas contas em dia", "Evite abrir novas linhas de crédito", "Reduza o uso do limite de crédito"]
+        case 580..<670:
+            return ["Continue pagando suas contas em dia", "Tente quitar dívidas antigas", "Monitore seu score regularmente"]
+        case 670..<740:
+            return ["Mantenha o bom histórico de pagamento", "Considere aumentar o limite de crédito", "Evite aumentar a dívida"]
+        case 740..<800:
+            return ["Mantenha os hábitos financeiros positivos", "Evite fechar muitas contas de crédito", "Verifique regularmente seu score"]
+        default:
+            return ["Continue assim! Seu score está excelente.", "Aproveite para negociar melhores taxas de crédito."]
         }
     }
 }

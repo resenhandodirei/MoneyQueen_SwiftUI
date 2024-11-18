@@ -32,26 +32,29 @@ struct TransactionView: View {
                             VStack(alignment: .leading) {
                                 Text(transaction.title)
                                     .font(.headline)
+                                    .foregroundColor(.darkPink)
                                 Text(transaction.category)
                                     .font(.subheadline)
-                                    .foregroundColor(.gray)
+                                    .foregroundColor(.lightPink)
                             }
                             Spacer()
                             Text("\(transaction.amount, specifier: "%.2f")")
                                 .fontWeight(.bold)
-                                .foregroundColor(transaction.amount < 0 ? .red : .green)
+                                .foregroundColor(transaction.amount < 0 ? .lightPink : .darkPink)
                         }
                     }
                     .onDelete(perform: deleteTransaction)
                 }
                 .listStyle(InsetGroupedListStyle())
                 .navigationTitle("Transações")
+                .navigationBarTitleDisplayMode(.inline) // Display the title inline
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button(action: {
                             showingAddTransaction = true
                         }) {
                             Image(systemName: "plus")
+                                .foregroundColor(.darkPink)
                         }
                     }
                 }
@@ -60,6 +63,7 @@ struct TransactionView: View {
                 AddTransactionView(transactions: $transactions)
             }
         }
+        .accentColor(.darkPink) // This will affect the color of navigation bar items like the back button and plus icon
     }
 
     private func deleteTransaction(at offsets: IndexSet) {
@@ -95,6 +99,7 @@ struct AddTransactionView: View {
                 }
             }
             .navigationTitle("Nova Transação")
+            .navigationBarTitleDisplayMode(.inline) // Display the title inline
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button("Cancelar") {
@@ -119,4 +124,3 @@ struct TransactionView_Previews: PreviewProvider {
         TransactionView()
     }
 }
-

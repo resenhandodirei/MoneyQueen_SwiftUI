@@ -13,6 +13,7 @@ struct ExpenseSplitView: View {
     @State private var includeTip: Bool = false
     @State private var tipPercentage: Double = 10
     @State private var result: String = ""
+    @State private var selectedTipOption = 10 // Para picker de gorjeta (10%, 15%, 20%)
     
     var body: some View {
         NavigationView {
@@ -50,22 +51,31 @@ struct ExpenseSplitView: View {
                 }
                 .padding()
                 
-                // Toggle para incluir gorjeta
+                // Toggle para incluir gorjeta com cor personalizada
                 Toggle(isOn: $includeTip) {
                     Text("Incluir Gorjeta")
                         .font(.headline)
                         .foregroundColor(.gray)
                 }
+                .toggleStyle(SwitchToggleStyle(tint: Color("darkPink"))) // Cor rosa no toggle
                 .padding(.horizontal)
                 
-                // Slider para a porcentagem da gorjeta (visível apenas se a opção estiver ativa)
+                // Picker para a porcentagem da gorjeta (visível apenas se a opção estiver ativa)
                 if includeTip {
                     VStack {
-                        Text("Porcentagem da Gorjeta: \(Int(tipPercentage))%")
+                        Text("Porcentagem da Gorjeta:")
                             .font(.subheadline)
                             .foregroundColor(.gray)
-                        Slider(value: $tipPercentage, in: 0...20, step: 1)
-                            .padding()
+                        
+                        Picker("Escolha a porcentagem", selection: $selectedTipOption) {
+                            Text("10%").tag(10)
+                            Text("15%").tag(15)
+                            Text("20%").tag(20)
+                        }
+                        .pickerStyle(SegmentedPickerStyle()) // Estilo com linhas
+                        .padding()
+                        .background(Color("darkPink").opacity(0.2)) // Cor de fundo rosa
+                        .cornerRadius(8)
                     }
                 }
                 
@@ -77,7 +87,7 @@ struct ExpenseSplitView: View {
                         .foregroundColor(.white)
                         .padding()
                         .frame(maxWidth: .infinity)
-                        .background(Color("darkPink"))
+                        .background(Color("darkPink"))  // Cor aplicada ao botão
                         .cornerRadius(12)
                         .shadow(radius: 5)
                 }
@@ -109,7 +119,7 @@ struct ExpenseSplitView: View {
         
         var finalAmount = total
         if includeTip {
-            finalAmount += total * (tipPercentage / 100)
+            finalAmount += total * (Double(selectedTipOption) / 100)
         }
         
         let splitAmount = finalAmount / Double(people)
@@ -122,4 +132,3 @@ struct ExpenseSplitView_Previews: PreviewProvider {
         ExpenseSplitView()
     }
 }
-

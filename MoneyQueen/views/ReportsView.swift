@@ -80,7 +80,7 @@ struct ReportsView: View {
                 }
             }
             .padding()
-            .navigationTitle("Relatórios")
+//            .navigationTitle("Relatórios")
             .navigationBarTitleDisplayMode(.inline)
         }
     }

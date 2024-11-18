@@ -28,6 +28,7 @@ struct InvestmentSimulatorView: View {
                         Text("R$ \(initialAmount, specifier: "%.2f")")
                     }
                     Slider(value: $initialAmount, in: 100...100000, step: 1000)
+                        .accentColor(.darkPink) // Cor personalizada do Slider
                         .padding(.horizontal)
                     
                     HStack {
@@ -36,6 +37,7 @@ struct InvestmentSimulatorView: View {
                         Text("\(interestRate, specifier: "%.2f")%")
                     }
                     Slider(value: $interestRate, in: 1...20, step: 0.1)
+                        .accentColor(.darkPink) // Cor personalizada do Slider
                         .padding(.horizontal)
                     
                     HStack {
@@ -44,6 +46,7 @@ struct InvestmentSimulatorView: View {
                         Text("\(Int(years)) anos")
                     }
                     Slider(value: $years, in: 1...30, step: 1)
+                        .accentColor(.darkPink) // Cor personalizada do Slider
                         .padding(.horizontal)
                 }
                 .padding()
@@ -57,27 +60,26 @@ struct InvestmentSimulatorView: View {
                         .foregroundColor(.white)
                         .padding()
                         .frame(maxWidth: .infinity)
-                        .background(Color.purple)
+                        .background(Color.darkPink)
                         .cornerRadius(10)
                 }
                 .padding(.horizontal)
-                
-                Spacer()
                 
                 if finalAmount > 0 {
                     Text("Valor Final Após \(Int(years)) Anos")
                         .font(.headline)
                         .padding(.top)
+                        .padding(.horizontal, 16)
                     
                     Text("R$ \(finalAmount, specifier: "%.2f")")
                         .font(.title)
                         .bold()
-                        .foregroundColor(.purple)
+                        .foregroundColor(.darkPink)
+                        .padding(.horizontal, 32)
                 }
                 
                 Spacer()
             }
-            .navigationBarTitle("Simulador de Investimento", displayMode: .inline)
         }
     }
     

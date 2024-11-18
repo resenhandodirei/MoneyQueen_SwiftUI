@@ -26,6 +26,7 @@ struct CurrencyConverterView: View {
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .padding(.top)
+                    .foregroundColor(.darkPink)
                 
                 // Campo de valor para converter
                 TextField("Valor", text: $amount)

@@ -29,6 +29,7 @@ struct RetirementPlannerView: View {
                         Text("R$ \(retirementGoal, specifier: "%.2f")")
                     }
                     Slider(value: $retirementGoal, in: 100000...2000000, step: 10000)
+                        .accentColor(.darkPink)  // Alteração para a cor darkPink
                         .padding(.horizontal)
 
                     HStack {
@@ -37,6 +38,7 @@ struct RetirementPlannerView: View {
                         Text("R$ \(currentSavings, specifier: "%.2f")")
                     }
                     Slider(value: $currentSavings, in: 0...1000000, step: 5000)
+                        .accentColor(.darkPink)  // Alteração para a cor darkPink
                         .padding(.horizontal)
 
                     HStack {
@@ -45,6 +47,7 @@ struct RetirementPlannerView: View {
                         Text("\(Int(yearsUntilRetirement)) anos")
                     }
                     Slider(value: $yearsUntilRetirement, in: 1...50, step: 1)
+                        .accentColor(.darkPink)  // Alteração para a cor darkPink
                         .padding(.horizontal)
 
                     HStack {
@@ -53,6 +56,7 @@ struct RetirementPlannerView: View {
                         Text("\(estimatedReturnRate, specifier: "%.1f")%")
                     }
                     Slider(value: $estimatedReturnRate, in: 1...15, step: 0.5)
+                        .accentColor(.darkPink)  // Alteração para a cor darkPink
                         .padding(.horizontal)
                 }
                 .padding()
@@ -66,7 +70,7 @@ struct RetirementPlannerView: View {
                         .foregroundColor(.white)
                         .padding()
                         .frame(maxWidth: .infinity)
-                        .background(Color.purple)
+                        .background(Color.darkPink)
                         .cornerRadius(10)
                         .padding(.horizontal)
                 }
@@ -79,13 +83,13 @@ struct RetirementPlannerView: View {
                     Text("R$ \(monthlyContribution, specifier: "%.2f")")
                         .font(.title)
                         .bold()
-                        .foregroundColor(.purple)
+                        .foregroundColor(.darkPink)
                         .padding(.horizontal)
                 }
 
                 Spacer()
             }
-            .navigationBarTitle("Planejador de Aposentadoria", displayMode: .inline)
+//            .navigationBarTitle("Planejador de Aposentadoria", displayMode: .inline)
         }
     }
 

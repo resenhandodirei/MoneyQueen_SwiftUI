@@ -25,6 +25,7 @@ struct BillReminderView: View {
                 }
             }
             .navigationTitle("Lembretes de Contas")
+            .navigationBarTitleDisplayMode(.inline) // Título inline
             .navigationBarItems(trailing: Button(action: {
                 showingAddReminder = true
             }) {
@@ -58,10 +59,11 @@ struct ReminderRow: View {
                     .font(.headline)
                 Text("R$ \(reminder.amount)")
                     .font(.subheadline)
-                    .foregroundColor(.gray)
+                    .foregroundColor(.darkPink)
                 Text("Vencimento: \(reminder.dueDate, formatter: dateFormatter)")
                     .font(.subheadline)
-                    .foregroundColor(.gray)
+                    .foregroundColor(.darkPink)
+                    .fontWeight(.semibold)
             }
             Spacer()
         }
@@ -91,6 +93,8 @@ struct AddReminderView: View {
                 }
             }
             .navigationTitle("Adicionar Lembrete")
+            .navigationBarTitleDisplayMode(.inline) // Título inline
+            .listStyle(InsetGroupedListStyle())
             .navigationBarItems(leading: Button("Cancelar") {
                 presentationMode.wrappedValue.dismiss()
             }, trailing: Button("Salvar") {

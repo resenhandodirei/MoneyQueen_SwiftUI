@@ -32,12 +32,12 @@ struct UserInsightsView: View {
                             Image(systemName: insight.icon)
                                 .resizable()
                                 .frame(width: 40, height: 40)
-                                .foregroundColor(.purple)
+                                .foregroundColor(.darkPink)
                             
                             VStack(alignment: .leading, spacing: 6) {
                                 Text(insight.title)
                                     .font(.headline)
-                                    .foregroundColor(.purple)
+                                    .foregroundColor(.darkPink)
                                 Text(insight.description)
                                     .font(.subheadline)
                                     .foregroundColor(.gray)

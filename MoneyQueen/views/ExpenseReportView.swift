@@ -28,15 +28,11 @@ struct ExpenseReportView: View {
                             .font(.largeTitle)
                             .fontWeight(.bold)
                         Spacer()
-                        Picker("Mês", selection: $selectedMonth) {
-                            Text("Novembro").tag("Novembro")
-                            Text("Outubro").tag("Outubro")
-                            Text("Setembro").tag("Setembro")
-                        }
-                        .pickerStyle(MenuPickerStyle())
-                        .background(Color.pink.opacity(0.1))
-                        .cornerRadius(10)
-                        .padding(.trailing)
+                        
+                        // Picker customizado
+                        MonthPicker(selectedMonth: $selectedMonth)
+                            .frame(width: 150, height: 40)
+                            .padding(.trailing)
                     }
                     .padding(.horizontal)
 
@@ -95,10 +91,34 @@ struct ExpenseReportView: View {
                     .shadow(radius: 5)
                     .padding(.horizontal)
                 }
-                .navigationTitle("Relatório de Despesas")
                 .padding(.bottom)
             }
         }
+    }
+}
+
+// Picker customizado para seleção de mês
+struct MonthPicker: View {
+    @Binding var selectedMonth: String
+    
+    let months = ["Novembro", "Outubro", "Setembro"]
+    
+    var body: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 10)
+                .fill(Color.pink.opacity(0.15))
+                .shadow(radius: 5)
+            
+            Picker("Mês", selection: $selectedMonth) {
+                ForEach(months, id: \.self) { month in
+                    Text(month).tag(month)
+                }
+            }
+            .pickerStyle(MenuPickerStyle())
+            .foregroundColor(Color("darkPink"))
+            .padding(.horizontal)
+        }
+        .padding(.vertical, 5)
     }
 }
 

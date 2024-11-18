@@ -10,6 +10,16 @@ struct MenuListView: View {
     var body: some View {
         NavigationView {
             List {
+                // Menu principal
+                HStack {
+                    NavigationLink(destination: ContentView()) {
+                        Image(systemName: "line.3.horizontal") // Ícone de linhas
+                            .foregroundColor(Color("darkPink"))
+                            .frame(width: 25, height: 25) // Ajuste o tamanho conforme necessário
+                    }
+                    Spacer() // Alinha o ícone à direita
+                }
+                
                 // Perfil do Usuário
                 HStack {
                     Image(systemName: "person.crop.circle.fill")
@@ -85,9 +95,19 @@ struct MenuItem: View {
             Image(systemName: icon)
                 .foregroundColor(Color("darkPink"))
                 .frame(width: 30)
+            
             Text(title)
                 .foregroundColor(Color("darkPink"))
                 .font(.body)
+            
+            Spacer() // Isso move o ícone de linhas para a direita
+            
+            // Adicionando o ícone de "lines" para o item de menu
+            NavigationLink(destination: ContentView()) {
+                Image(systemName: "line.3.horizontal") // Ícone de linhas
+                    .foregroundColor(Color("darkPink"))
+                    .frame(width: 25, height: 25) // Ajuste o tamanho
+            }
         }
         .padding(.vertical, 5)
     }

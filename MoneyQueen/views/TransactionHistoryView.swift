@@ -24,7 +24,7 @@ struct TransactionHistoryView: View {
                     VStack(alignment: .leading) {
                         Text(transaction.category)
                             .font(.headline)
-                            .foregroundColor(transaction.amount < 0 ? .red : .green)
+                            .foregroundColor(transaction.amount < 0 ? .lightPink : .darkPink)
                         Text(transaction.description)
                             .font(.subheadline)
                             .foregroundColor(.secondary)
@@ -38,7 +38,7 @@ struct TransactionHistoryView: View {
                             .foregroundColor(.gray)
                         Text(transaction.amount, format: .currency(code: "BRL"))
                             .font(.headline)
-                            .foregroundColor(transaction.amount < 0 ? .red : .green)
+                            .foregroundColor(transaction.amount < 0 ? .lightPink : .darkPink)
                     }
                 }
                 .padding(.vertical, 8)

@@ -50,7 +50,6 @@ struct FinancialTrendsView: View {
                             y: .value("Receita", data.income)
                         )
                         .foregroundStyle(Color("darkPink"))
-                        //.symbol(Square())
                         .interpolationMethod(.catmullRom)
                     }
                 }
@@ -80,8 +79,11 @@ struct FinancialTrendsView: View {
                 Spacer()
             }
             .padding()
-            .navigationTitle("Tendências")
             .navigationBarTitleDisplayMode(.inline)
+        }
+        .onChange(of: expenseData) { newValue in
+            // Ação de atualização ou lógica adicional ao observar mudanças em expenseData
+            print("expenseData foi alterado!")
         }
     }
     
@@ -105,7 +107,7 @@ struct FinancialTrendsView: View {
 }
 
 // Estrutura de dados para armazenar informações de cada mês
-struct FinancialData: Identifiable {
+struct FinancialData: Identifiable, Equatable {
     let id = UUID()
     let month: String
     let expense: Double
@@ -117,4 +119,3 @@ struct FinancialTrendsView_Previews: PreviewProvider {
         FinancialTrendsView()
     }
 }
-

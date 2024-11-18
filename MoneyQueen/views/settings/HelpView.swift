@@ -14,7 +14,7 @@ struct HelpView: View {
             Text("Ajuda e Suporte")
                 .font(.largeTitle)
                 .fontWeight(.bold)
-                .foregroundColor(Color("wine"))
+                .foregroundColor(Color("darkPink"))
             
             Text("Como podemos ajudar você a reinar sobre suas finanças?")
                 .font(.subheadline)
@@ -24,7 +24,7 @@ struct HelpView: View {
             List {
                 Section(header: Text("Perguntas Frequentes")
                             .font(.headline)
-                            .foregroundColor(Color("wine"))) {
+                            .foregroundColor(Color("darkPink"))) {
                     FAQRow(question: "Como criar uma meta financeira?", answer: "No seu perfil, selecione 'Metas Financeiras' e insira os valores que deseja economizar ou gastar.")
                     
                     FAQRow(question: "Como ativar notificações?", answer: "Em 'Preferências' no perfil, ative as opções de notificações para receber alertas personalizados.")
@@ -37,7 +37,7 @@ struct HelpView: View {
                 // Contato com o Suporte
                 Section(header: Text("Contato com Suporte")
                             .font(.headline)
-                            .foregroundColor(Color("wine"))) {
+                            .foregroundColor(Color("darkPink"))) {
                     HStack {
                         Image(systemName: "envelope.fill")
                             .foregroundColor(Color("darkPink"))
@@ -62,7 +62,7 @@ struct HelpView: View {
                 // Links Úteis
                 Section(header: Text("Links Úteis")
                             .font(.headline)
-                            .foregroundColor(Color("wine"))) {
+                            .foregroundColor(Color("darkPink"))) {
                     Link("Guia de Introdução ao Money Queen", destination: URL(string: "https://www.moneyqueenapp.com/guia")!)
                     
                     Link("Política de Privacidade", destination: URL(string: "https://www.moneyqueenapp.com/privacidade")!)

@@ -20,10 +20,11 @@ struct FinancialGoalsView: View {
             VStack {
                 // Título
                 Text("Metas Financeiras")
-                    .font(.largeTitle)
+                    .font(.title2)
                     .fontWeight(.bold)
                     .padding(.top)
-                
+                    .foregroundColor(Color("darkPink")) // Alteração para rosa
+            
                 // Lista de Metas
                 List {
                     ForEach(goals) { goal in
@@ -41,7 +42,7 @@ struct FinancialGoalsView: View {
                         .foregroundColor(.white)
                         .padding()
                         .frame(maxWidth: .infinity)
-                        .background(Color("darkPink"))
+                        .background(Color("darkPink")) // Alteração para rosa
                         .cornerRadius(12)
                         .shadow(radius: 5)
                         .padding(.horizontal)
@@ -69,7 +70,7 @@ struct GoalProgressView: View {
             Text(goal.title)
                 .font(.headline)
             ProgressView(value: progress)
-                .accentColor(.green)
+                .accentColor(Color("darkPink")) // Alteração para rosa
                 .padding(.vertical)
             HStack {
                 Text("Concluído: \(Int(progress * 100))%")
@@ -98,22 +99,30 @@ struct AddGoalView: View {
     @State private var title: String = ""
     @State private var targetAmount: String = ""
     @State private var currentAmount: String = ""
+    @State private var showAlertSuccess = false
+    @State private var showAlertError = false
     
     var body: some View {
         NavigationView {
             Form {
                 Section(header: Text("Nome da Meta")) {
                     TextField("Ex: Viagem para Europa", text: $title)
+                        .foregroundColor(Color("darkPink")) // Cor rosa
+                        .accentColor(Color("darkPink")) // Cor rosa para o cursor
                 }
                 
                 Section(header: Text("Valor Alvo")) {
                     TextField("Ex: 10000", text: $targetAmount)
                         .keyboardType(.decimalPad)
+                        .foregroundColor(Color("darkPink")) // Cor rosa
+                        .accentColor(Color("darkPink")) // Cor rosa para o cursor
                 }
                 
                 Section(header: Text("Valor Atual")) {
                     TextField("Ex: 3000", text: $currentAmount)
                         .keyboardType(.decimalPad)
+                        .foregroundColor(Color("darkPink")) // Cor rosa
+                        .accentColor(Color("darkPink")) // Cor rosa para o cursor
                 }
                 
                 Button(action: addGoal) {
@@ -122,8 +131,18 @@ struct AddGoalView: View {
                         .foregroundColor(.white)
                         .padding()
                         .frame(maxWidth: .infinity)
-                        .background(Color("darkPink"))
+                        .background(Color("darkPink")) // Cor rosa
                         .cornerRadius(10)
+                }
+                .alert(isPresented: $showAlertSuccess) {
+                    Alert(title: Text("Meta Adicionada"),
+                          message: Text("Sua meta foi salva com sucesso!"),
+                          dismissButton: .default(Text("OK")))
+                }
+                .alert(isPresented: $showAlertError) {
+                    Alert(title: Text("Erro"),
+                          message: Text("Por favor, preencha todos os campos corretamente."),
+                          dismissButton: .default(Text("OK")))
                 }
             }
             .navigationTitle("Nova Meta")
@@ -138,10 +157,14 @@ struct AddGoalView: View {
     }
     
     private func addGoal() {
+        // Verifica se os campos são válidos
         if let target = Double(targetAmount), let current = Double(currentAmount), !title.isEmpty {
             let newGoal = FinancialGoal(title: title, targetAmount: target, currentAmount: current)
             goals.append(newGoal)
             dismiss()
+            showAlertSuccess = true // Exibe o alerta de sucesso
+        } else {
+            showAlertError = true // Exibe o alerta de erro
         }
     }
 }
@@ -159,4 +182,3 @@ struct FinancialGoalsView_Previews: PreviewProvider {
         FinancialGoalsView()
     }
 }
-

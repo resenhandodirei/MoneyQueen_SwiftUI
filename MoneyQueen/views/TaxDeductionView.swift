@@ -60,9 +60,10 @@ struct TaxDeductionView: View {
                     Text("Calcular Dedução")
                         .frame(maxWidth: .infinity)
                         .padding()
-                        .background(Color("wine"))
+                        .background(Color("darkPink"))
                         .foregroundColor(.white)
                         .cornerRadius(8)
+                        .textCase(.lowercase)
                 }
                 .padding(.vertical, 10)
                 
@@ -84,7 +85,7 @@ struct TaxDeductionView: View {
                 Spacer()
             }
             .padding()
-            .navigationTitle("Deduções Fiscais")
+//            .navigationTitle("Deduções Fiscais")
             .navigationBarTitleDisplayMode(.inline)
         }
     }

@@ -24,13 +24,16 @@ struct FinancialCoachingView: View {
         CoachingSession(title: "Economizando para Grandes Objetivos", description: "Saiba como poupar para grandes metas financeiras, como viagens, compra de um imóvel, ou aposentadoria.", duration: "50 min", icon: "house.fill", isBooked: false)
     ]
     
+    @State private var showingAlert = false // Para o alerta de agendamento
+    
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
                 Text("Sessões de Coaching Financeiro")
-                    .font(.largeTitle)
+                    .font(.title2)
                     .bold()
                     .padding(.horizontal)
+                    .foregroundColor(.darkPink)
                 
                 ScrollView {
                     VStack(spacing: 20) {
@@ -49,20 +52,27 @@ struct FinancialCoachingView: View {
                         .padding(.top)
                     
                     Button(action: {
-                        // Ação para iniciar uma consulta personalizada
+                        showingAlert = true // Exibe o alerta quando o botão é pressionado
                     }) {
                         Text("Agendar Consulta Personalizada")
                             .font(.headline)
                             .foregroundColor(.white)
                             .frame(maxWidth: .infinity)
                             .padding()
-                            .background(Color.purple)
+                            .background(Color("darkPink"))
                             .cornerRadius(10)
                     }
                     .padding()
+                    .alert(isPresented: $showingAlert) {
+                        Alert(title: Text("Agendamento"), message: Text("Gostaria de agendar uma consulta personalizada?"), primaryButton: .default(Text("Sim"), action: {
+                            // Ação para agendar a consulta
+                            print("Consulta agendada!")
+                        }), secondaryButton: .cancel())
+                    }
                 }
             }
-            .navigationBarTitle("Coaching Financeiro", displayMode: .inline)
+//            .navigationTitle("Coaching Financeiro")
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }
@@ -76,12 +86,12 @@ struct CoachingSessionRow: View {
                 Image(systemName: session.icon)
                     .resizable()
                     .frame(width: 40, height: 40)
-                    .foregroundColor(.purple)
+                    .foregroundColor(Color("darkPink"))
                 
                 VStack(alignment: .leading) {
                     Text(session.title)
                         .font(.headline)
-                        .foregroundColor(.purple)
+                        .foregroundColor(Color("darkPink"))
                     
                     Text(session.description)
                         .font(.subheadline)
@@ -91,7 +101,8 @@ struct CoachingSessionRow: View {
                     
                     Text("Duração: \(session.duration)")
                         .font(.footnote)
-                        .foregroundColor(.gray)
+                        .fontWeight(.semibold)
+                        .foregroundColor(.pink)
                 }
                 
                 Spacer()
@@ -101,7 +112,7 @@ struct CoachingSessionRow: View {
                 }) {
                     Text(session.isBooked ? "Reservado" : "Reservar")
                         .font(.subheadline)
-                        .foregroundColor(session.isBooked ? .gray : .purple)
+                        .foregroundColor(session.isBooked ? .pink : Color("darkPink"))
                         .padding(6)
                         .background(session.isBooked ? Color.gray.opacity(0.2) : Color.purple.opacity(0.1))
                         .cornerRadius(8)

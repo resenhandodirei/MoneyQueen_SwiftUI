@@ -54,7 +54,7 @@ struct RecurringExpensesView: View {
                 }) {
                     Image(systemName: "plus.circle")
                         .font(.title)
-                        .foregroundColor(.purple)
+                        .foregroundColor(.darkPink)
                 }
             )
             .sheet(isPresented: $showingAddExpenseView) {

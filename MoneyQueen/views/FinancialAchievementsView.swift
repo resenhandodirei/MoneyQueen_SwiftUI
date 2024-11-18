@@ -40,8 +40,8 @@ struct FinancialAchievementsView: View {
                 }
                 .padding(.top)
             }
-            .padding()
-            .navigationTitle("Conquistas")
+//            .padding()
+//            .navigationTitle("Conquistas")
         }
     }
 }

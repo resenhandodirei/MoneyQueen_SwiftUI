@@ -70,7 +70,7 @@ struct LoanManagerView: View {
                     isAddingLoan = true
                 }) {
                     Text("Adicionar Empréstimo")
-                        .font(.headline)
+                        .font(.subheadline)
                         .foregroundColor(.white)
                         .padding()
                         .frame(maxWidth: .infinity)

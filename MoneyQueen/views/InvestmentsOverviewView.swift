@@ -25,8 +25,9 @@ struct InvestmentsOverviewView: View {
                     // Cabeçalho: Saldo e Rendimento
                     VStack(alignment: .leading, spacing: 8) {
                         Text("Visão Geral dos Investimentos")
-                            .font(.largeTitle)
+                            .font(.title2)
                             .fontWeight(.bold)
+                            .foregroundColor(.darkPink)
                             .padding(.horizontal)
                         
                         Text("Saldo Total")
@@ -36,7 +37,7 @@ struct InvestmentsOverviewView: View {
                         Text(totalInvestment, format: .currency(code: "BRL"))
                             .font(.largeTitle)
                             .fontWeight(.bold)
-                            .foregroundColor(.green)
+                            .foregroundColor(.darkPink)
                             .padding(.bottom, 5)
                         
                         Text("Rendimento Total")
@@ -44,12 +45,12 @@ struct InvestmentsOverviewView: View {
                         
                         Text(totalProfit, format: .currency(code: "BRL"))
                             .font(.title)
-                            .foregroundColor(totalProfit >= 0 ? .green : .red)
+                            .foregroundColor(totalProfit >= 0 ? .pink : .babyPink)
                     }
                     .padding()
                     .background(Color("lightPink").opacity(0.2))
-                    .cornerRadius(12)
-                    .shadow(radius: 5)
+                    .cornerRadius(16)
+                    .shadow(radius: 8)
                     .padding(.horizontal)
 
                     // Gráfico de Pizza de Investimentos por Tipo
@@ -68,8 +69,8 @@ struct InvestmentsOverviewView: View {
                     .frame(height: 300)
                     .padding()
                     .background(Color.white)
-                    .cornerRadius(12)
-                    .shadow(radius: 5)
+                    .cornerRadius(16)
+                    .shadow(radius: 8)
                     .padding(.horizontal)
                     
                     // Lista de Investimentos Detalhada
@@ -77,27 +78,29 @@ struct InvestmentsOverviewView: View {
                         .font(.headline)
                         .padding(.top)
                     
-                    VStack(alignment: .leading, spacing: 10) {
+                    VStack(alignment: .leading, spacing: 15) {
                         ForEach(investments) { investment in
                             HStack {
                                 Text(investment.type)
                                     .fontWeight(.medium)
+                                    .foregroundColor(.darkPink)
                                 Spacer()
                                 Text(investment.amount, format: .currency(code: "BRL"))
-                                    .foregroundColor(.blue)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(.darkPink)
                             }
                             Divider()
                         }
                     }
                     .padding()
                     .background(Color.white)
-                    .cornerRadius(12)
-                    .shadow(radius: 5)
+                    .cornerRadius(16)
+                    .shadow(radius: 8)
                     .padding(.horizontal)
                 }
-                .navigationTitle("Investimentos")
                 .padding(.bottom)
             }
+            .navigationTitle("Investimentos")
         }
     }
 }

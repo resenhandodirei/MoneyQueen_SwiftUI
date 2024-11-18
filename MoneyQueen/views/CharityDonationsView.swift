@@ -4,7 +4,6 @@
 //
 //  Created by Larissa Martins Correa on 14/11/24.
 //
-
 import SwiftUI
 
 struct CharityDonationsView: View {
@@ -12,15 +11,12 @@ struct CharityDonationsView: View {
     @State private var currentDonations: Double = 0.0
     @State private var donationAmount: Double = 0.0
     @State private var donationList: [String: Double] = [:] // Nome da organização e valor doado
-
+    @State private var showAlert: Bool = false
+    @State private var alertMessage: String = ""
+    
     var body: some View {
         NavigationView {
             VStack(alignment: .leading, spacing: 20) {
-                Text("Doações de Caridade")
-                    .font(.largeTitle)
-                    .bold()
-                    .padding(.horizontal)
-                
                 VStack(alignment: .leading, spacing: 15) {
                     HStack {
                         Text("Meta de Doação:")
@@ -28,6 +24,7 @@ struct CharityDonationsView: View {
                         Text("R$ \(donationGoal, specifier: "%.2f")")
                     }
                     Slider(value: $donationGoal, in: 100...10000, step: 100)
+                        .accentColor(Color("darkPink")) // Cor darkPink no Slider
                         .padding(.horizontal)
                     
                     HStack {
@@ -37,7 +34,7 @@ struct CharityDonationsView: View {
                     }
                     
                     ProgressView(value: currentDonations, total: donationGoal)
-                        .accentColor(.purple)
+                        .accentColor(Color("darkPink")) // Cor darkPink na ProgressView
                         .padding(.horizontal)
                     
                     Divider()
@@ -64,7 +61,7 @@ struct CharityDonationsView: View {
                             .foregroundColor(.white)
                             .padding()
                             .frame(maxWidth: .infinity)
-                            .background(Color.purple)
+                            .background(Color("darkPink")) // Cor darkPink no botão
                             .cornerRadius(10)
                     }
                     .padding(.horizontal)
@@ -97,16 +94,29 @@ struct CharityDonationsView: View {
                     .disabled(currentDonations < donationGoal)
                 }
             }
+            .alert(isPresented: $showAlert) {
+                Alert(title: Text("Doação Adicionada"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+            }
         }
     }
 
     // Função para adicionar uma doação
     func addDonation() {
-        guard donationAmount > 0 else { return }
+        // Verifica se o valor da doação é maior que zero
+        guard donationAmount > 0 else {
+            alertMessage = "O valor da doação precisa ser maior que zero."
+            showAlert = true
+            return
+        }
         
-        let organizationName = "Organização \(donationList.count + 1)" // Nome genérico para simplificação
+        // Nome genérico para a organização
+        let organizationName = "Organização \(donationList.count + 1)"
         donationList[organizationName] = donationAmount
         currentDonations += donationAmount
+        alertMessage = "Você doou R$ \(donationAmount) para \(organizationName)."
+        showAlert = true
+        
+        // Resetar o valor da doação
         donationAmount = 0.0
     }
     
@@ -114,6 +124,8 @@ struct CharityDonationsView: View {
     func resetDonations() {
         donationList.removeAll()
         currentDonations = 0.0
+        alertMessage = "As doações foram resetadas com sucesso!"
+        showAlert = true
     }
 }
 
