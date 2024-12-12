@@ -22,7 +22,6 @@ struct ExpenseReportView: View {
         NavigationView {
             ScrollView {
                 VStack(spacing: 20) {
-                    // Cabeçalho com seleção de mês
                     HStack {
                         Text("Relatório de Despesas")
                             .font(.largeTitle)
@@ -36,7 +35,6 @@ struct ExpenseReportView: View {
                     }
                     .padding(.horizontal)
 
-                    // Gráfico de Barras das Despesas por Categoria
                     Text("Despesas por Categoria")
                         .font(.headline)
                         .padding(.top)
@@ -55,7 +53,6 @@ struct ExpenseReportView: View {
                     .shadow(radius: 5)
                     .padding(.horizontal)
                     
-                    // Resumo Total
                     Text("Resumo Total")
                         .font(.headline)
                         .padding(.top)
@@ -72,7 +69,6 @@ struct ExpenseReportView: View {
                             Divider()
                         }
                         
-                        // Total de despesas
                         HStack {
                             Text("Total")
                                 .font(.title3)

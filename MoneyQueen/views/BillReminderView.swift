@@ -25,7 +25,7 @@ struct BillReminderView: View {
                 }
             }
             .navigationTitle("Lembretes de Contas")
-            .navigationBarTitleDisplayMode(.inline) // Título inline
+            .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(trailing: Button(action: {
                 showingAddReminder = true
             }) {
@@ -39,7 +39,6 @@ struct BillReminderView: View {
     }
 }
 
-// Modelo de dados para um lembrete de conta
 struct BillReminder: Identifiable {
     let id = UUID()
     var title: String
@@ -48,7 +47,6 @@ struct BillReminder: Identifiable {
     var notes: String
 }
 
-// Linha de exibição para cada lembrete de conta
 struct ReminderRow: View {
     var reminder: BillReminder
     
@@ -93,7 +91,7 @@ struct AddReminderView: View {
                 }
             }
             .navigationTitle("Adicionar Lembrete")
-            .navigationBarTitleDisplayMode(.inline) // Título inline
+            .navigationBarTitleDisplayMode(.inline)
             .listStyle(InsetGroupedListStyle())
             .navigationBarItems(leading: Button("Cancelar") {
                 presentationMode.wrappedValue.dismiss()

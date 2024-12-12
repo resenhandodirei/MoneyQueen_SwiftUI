@@ -10,17 +10,15 @@ struct MenuListView: View {
     var body: some View {
         NavigationView {
             List {
-                // Menu principal
                 HStack {
                     NavigationLink(destination: ContentView()) {
-                        Image(systemName: "line.3.horizontal") // Ícone de linhas
+                        Image(systemName: "line.3.horizontal") 
                             .foregroundColor(Color("darkPink"))
-                            .frame(width: 25, height: 25) // Ajuste o tamanho conforme necessário
+                            .frame(width: 25, height: 25)
                     }
-                    Spacer() // Alinha o ícone à direita
+                    Spacer()
                 }
                 
-                // Perfil do Usuário
                 HStack {
                     Image(systemName: "person.crop.circle.fill")
                         .resizable()
@@ -38,11 +36,9 @@ struct MenuListView: View {
                 }
                 .padding(.vertical)
                 
-                // Opções do Menu
                 Section(header: Text("Opções")
                             .font(.headline)
                             .foregroundColor(Color("darkPink"))) {
-                    // Botões de navegação para outras funcionalidades
                     NavigationLink(destination: ProfileView()) {
                         MenuItem(icon: "person.circle", title: "Perfil")
                     }
@@ -64,9 +60,7 @@ struct MenuListView: View {
                     }
                 }
                 
-                // Botão de Sair
                 Button(action: {
-                    // Ação para encerrar a sessão
                 }) {
                     HStack {
                         Image(systemName: "arrow.backward.circle")
@@ -100,13 +94,11 @@ struct MenuItem: View {
                 .foregroundColor(Color("darkPink"))
                 .font(.body)
             
-            Spacer() // Isso move o ícone de linhas para a direita
-            
-            // Adicionando o ícone de "lines" para o item de menu
+            Spacer()
             NavigationLink(destination: ContentView()) {
-                Image(systemName: "line.3.horizontal") // Ícone de linhas
+                Image(systemName: "line.3.horizontal")
                     .foregroundColor(Color("darkPink"))
-                    .frame(width: 25, height: 25) // Ajuste o tamanho
+                    .frame(width: 25, height: 25) 
             }
         }
         .padding(.vertical, 5)

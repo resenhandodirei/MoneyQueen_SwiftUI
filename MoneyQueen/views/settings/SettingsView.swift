@@ -20,36 +20,33 @@ struct SettingsView: View {
     var body: some View {
         NavigationView {
             List {
-                // Seção Conta e Privacidade
                 Section(header: Text("Conta e Privacidade")) {
                     Toggle(isOn: $privacyModeEnabled) {
                         Label("Modo Privado", systemImage: "lock.fill")
-                            .foregroundColor(Color("darkPink")) // Cor do ícone
+                            .foregroundColor(Color("darkPink"))
                     }
-                    .toggleStyle(SwitchToggleStyle(tint: Color("darkPink"))) // Cor do Toggle
+                    .toggleStyle(SwitchToggleStyle(tint: Color("darkPink")))
                     
                     NavigationLink(destination: PrivacySettingsView()) {
                         Label("Configurações de Privacidade", systemImage: "shield.fill")
-                            .foregroundColor(Color("darkPink")) // Cor do ícone
+                            .foregroundColor(Color("darkPink"))
                     }
                 }
                 
-                // Seção de Notificações
                 Section(header: Text("Notificações")) {
                     Toggle(isOn: $notificationsEnabled) {
                         Label("Notificações", systemImage: "bell.fill")
-                            .foregroundColor(Color("darkPink")) // Cor do ícone
+                            .foregroundColor(Color("darkPink"))
                     }
-                    .toggleStyle(SwitchToggleStyle(tint: Color("darkPink"))) // Cor do Toggle
+                    .toggleStyle(SwitchToggleStyle(tint: Color("darkPink")))
                 }
                 
-                // Seção de Preferências de Aparência
                 Section(header: Text("Aparência")) {
                     Toggle(isOn: $darkModeEnabled) {
                         Label("Modo Escuro", systemImage: "moon.fill")
-                            .foregroundColor(Color("darkPink")) // Cor do ícone
+                            .foregroundColor(Color("darkPink"))
                     }
-                    .toggleStyle(SwitchToggleStyle(tint: Color("darkPink"))) // Cor do Toggle
+                    .toggleStyle(SwitchToggleStyle(tint: Color("darkPink")))
                     
                     Picker("Cor do Tema", selection: $selectedThemeColor) {
                         ForEach(themeColors, id: \.self) { color in
@@ -59,7 +56,6 @@ struct SettingsView: View {
                     }
                 }
                 
-                // Seção de Preferências de Moeda
                 Section(header: Text("Preferências de Moeda")) {
                     Picker("Moeda", selection: $selectedCurrency) {
                         ForEach(currencies, id: \.self) { currency in
@@ -68,26 +64,23 @@ struct SettingsView: View {
                     }
                 }
                 
-                // Seção Sobre o App
                 Section(header: Text("Sobre")) {
                     NavigationLink(destination: AboutView()) {
                         Label("Sobre o Money Queen", systemImage: "info.circle.fill")
-                            .foregroundColor(Color("darkPink")) // Cor do ícone
+                            .foregroundColor(Color("darkPink"))
                     }
                     NavigationLink(destination: HelpView()) {
                         Label("Ajuda", systemImage: "questionmark.circle.fill")
-                            .foregroundColor(Color("darkPink")) // Cor do ícone
+                            .foregroundColor(Color("darkPink"))
                     }
                     NavigationLink(destination: LegalInfoView()) {
                         Label("Informações Legais", systemImage: "doc.text.fill")
-                            .foregroundColor(Color("darkPink")) // Cor do ícone
+                            .foregroundColor(Color("darkPink"))
                     }
                 }
                 
-                // Seção de Sair
                 Section {
                     Button(action: {
-                        // Ação de Logout
                     }) {
                         HStack {
                             Spacer()
@@ -119,7 +112,6 @@ struct PrivacySettingsView: View {
                 .font(.body)
                 .padding(.horizontal)
             
-            // Adicione mais detalhes e opções de privacidade aqui
             Spacer()
         }
         .navigationTitle("Privacidade")
@@ -139,7 +131,6 @@ struct LegalInfoView: View {
                 .font(.body)
                 .padding(.horizontal)
             
-            // Adicione os textos de informações legais aqui
             Spacer()
         }
         .navigationTitle("Informações Legais")

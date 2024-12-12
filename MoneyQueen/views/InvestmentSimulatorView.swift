@@ -28,7 +28,7 @@ struct InvestmentSimulatorView: View {
                         Text("R$ \(initialAmount, specifier: "%.2f")")
                     }
                     Slider(value: $initialAmount, in: 100...100000, step: 1000)
-                        .accentColor(.darkPink) // Cor personalizada do Slider
+                        .accentColor(.darkPink)
                         .padding(.horizontal)
                     
                     HStack {
@@ -37,7 +37,7 @@ struct InvestmentSimulatorView: View {
                         Text("\(interestRate, specifier: "%.2f")%")
                     }
                     Slider(value: $interestRate, in: 1...20, step: 0.1)
-                        .accentColor(.darkPink) // Cor personalizada do Slider
+                        .accentColor(.darkPink)
                         .padding(.horizontal)
                     
                     HStack {
@@ -46,7 +46,7 @@ struct InvestmentSimulatorView: View {
                         Text("\(Int(years)) anos")
                     }
                     Slider(value: $years, in: 1...30, step: 1)
-                        .accentColor(.darkPink) // Cor personalizada do Slider
+                        .accentColor(.darkPink)
                         .padding(.horizontal)
                 }
                 .padding()
@@ -84,7 +84,6 @@ struct InvestmentSimulatorView: View {
     }
     
     func calculateInvestment() {
-        // Calcula o valor final com base em juros compostos
         let rate = interestRate / 100
         finalAmount = initialAmount * pow(1 + rate, years)
     }

@@ -11,7 +11,6 @@ struct AboutView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 30) {
-                // Título e ícone do app
                 VStack {
                     Image("icon")
                         .resizable()
@@ -25,7 +24,6 @@ struct AboutView: View {
                         .foregroundColor(Color("wine"))
                 }
                 
-                // Descrição do aplicativo
                 VStack(alignment: .leading, spacing: 10) {
                     Text("Nosso Propósito")
                         .font(.title2)
@@ -39,7 +37,6 @@ struct AboutView: View {
                 }
                 .padding(.horizontal)
                 
-                // Funcionalidades do App
                 VStack(alignment: .leading, spacing: 10) {
                     Text("Funcionalidades")
                         .font(.title2)
@@ -55,7 +52,6 @@ struct AboutView: View {
                 }
                 .padding(.horizontal)
                 
-                // Sobre a equipe
                 VStack(alignment: .leading, spacing: 10) {
                     Text("Nossa Equipe")
                         .font(.title2)

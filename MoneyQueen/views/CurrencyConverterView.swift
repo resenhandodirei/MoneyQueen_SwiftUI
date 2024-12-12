@@ -8,27 +8,23 @@
 import SwiftUI
 
 struct CurrencyConverterView: View {
-    // Estados para valores e moedas
     @State private var amount: String = ""
     @State private var fromCurrency: String = "USD"
     @State private var toCurrency: String = "BRL"
     @State private var convertedAmount: String = ""
     @State private var isConverting = false
     
-    // Lista de moedas suportadas (simulada)
     let currencies = ["USD", "BRL", "EUR", "JPY", "GBP", "CAD", "AUD", "CNY"]
     
     var body: some View {
         NavigationView {
             VStack(spacing: 20) {
-                // Título
-                Text("Conversor de Moedas")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .padding(.top)
-                    .foregroundColor(.darkPink)
+//                Text("Conversor de Moedas")
+//                    .font(.largeTitle)
+//                    .fontWeight(.bold)
+//                    .padding(.top)
+//                    .foregroundColor(.darkPink)
                 
-                // Campo de valor para converter
                 TextField("Valor", text: $amount)
                     .keyboardType(.decimalPad)
                     .padding()
@@ -36,7 +32,6 @@ struct CurrencyConverterView: View {
                     .cornerRadius(10)
                     .padding(.horizontal)
                 
-                // Seleção de moeda de origem
                 HStack {
                     Text("De:")
                         .fontWeight(.bold)
@@ -50,7 +45,6 @@ struct CurrencyConverterView: View {
                 }
                 .padding(.horizontal)
                 
-                // Seleção de moeda de destino
                 HStack {
                     Text("Para:")
                         .fontWeight(.bold)
@@ -64,7 +58,6 @@ struct CurrencyConverterView: View {
                 }
                 .padding(.horizontal)
                 
-                // Botão de conversão
                 Button(action: convertCurrency) {
                     Text("Converter")
                         .font(.headline)
@@ -78,7 +71,6 @@ struct CurrencyConverterView: View {
                 }
                 .disabled(isConverting || amount.isEmpty || fromCurrency == toCurrency)
                 
-                // Resultado da conversão
                 if !convertedAmount.isEmpty {
                     Text("Valor Convertido: \(convertedAmount)")
                         .font(.title)
@@ -87,7 +79,10 @@ struct CurrencyConverterView: View {
                 
                 Spacer()
             }
-//            .navigationTitle("Conversor")
+            .navigationTitle("Conversor")
+            .navigationBarTitleDisplayMode(.inline)
+
+            
         }
     }
     

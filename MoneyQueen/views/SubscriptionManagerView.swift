@@ -19,14 +19,12 @@ struct SubscriptionManagerView: View {
     var body: some View {
         NavigationView {
             VStack {
-                // Header da tela
                 Text("Assinaturas")
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .foregroundColor(Color("wine"))
                     .padding(.top, 20)
                 
-                // Lista de assinaturas
                 List {
                     ForEach(subscriptions) { subscription in
                         SubscriptionRow(subscription: subscription)
@@ -35,9 +33,7 @@ struct SubscriptionManagerView: View {
                 }
                 .listStyle(InsetGroupedListStyle())
                 
-                // Botão para adicionar nova assinatura
                 Button(action: {
-                    // Ação para adicionar nova assinatura
                 }) {
                     HStack {
                         Image(systemName: "plus.circle.fill")

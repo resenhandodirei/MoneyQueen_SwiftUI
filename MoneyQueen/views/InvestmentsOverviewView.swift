@@ -22,7 +22,6 @@ struct InvestmentsOverviewView: View {
         NavigationView {
             ScrollView {
                 VStack(spacing: 20) {
-                    // Cabeçalho: Saldo e Rendimento
                     VStack(alignment: .leading, spacing: 8) {
                         Text("Visão Geral dos Investimentos")
                             .font(.title2)
@@ -53,7 +52,6 @@ struct InvestmentsOverviewView: View {
                     .shadow(radius: 8)
                     .padding(.horizontal)
 
-                    // Gráfico de Pizza de Investimentos por Tipo
                     Text("Distribuição dos Investimentos")
                         .font(.headline)
                         .padding(.top)
@@ -73,7 +71,6 @@ struct InvestmentsOverviewView: View {
                     .shadow(radius: 8)
                     .padding(.horizontal)
                     
-                    // Lista de Investimentos Detalhada
                     Text("Investimentos por Tipo")
                         .font(.headline)
                         .padding(.top)

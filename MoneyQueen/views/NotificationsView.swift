@@ -46,7 +46,6 @@ struct NotificationsView: View {
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     Button(action: {
-                        // Ação para limpar todas as notificações
                         clearNotifications()
                     }) {
                         Text("Limpar Tudo")
@@ -81,7 +80,7 @@ struct NotificationItem: Identifiable {
     let title: String
     let message: String
     let date: String
-    var isRead: Bool // Novo campo para marcar como lida
+    var isRead: Bool 
 }
 
 struct NotificationsView_Previews: PreviewProvider {

@@ -15,14 +15,12 @@ struct RegisterView: View {
     
     var body: some View {
         ZStack {
-            // Fundo em gradiente rosa
             LinearGradient(gradient: Gradient(colors: [Color("darkPink")]),
                            startPoint: .topLeading,
                            endPoint: .bottomTrailing)
                 .ignoresSafeArea()
             
             VStack(spacing: 30) {
-                // Título da tela
                 VStack {
                     Text("Seja uma")
                         .font(.title)
@@ -34,21 +32,15 @@ struct RegisterView: View {
                 }
                 .padding(.top, 40)
 
-                // Campo de nome
                 CustomTextField(placeholder: "Nome", text: $name)
                 
-                // Campo de e-mail
                 CustomTextField(placeholder: "E-mail", text: $email, keyboardType: .emailAddress)
                 
-                // Campo de senha
                 CustomTextField(placeholder: "Senha", text: $password, isSecure: true)
                 
-                // Campo de confirmação de senha
                 CustomTextField(placeholder: "Confirme sua senha", text: $confirmPassword, isSecure: true)
                 
-                // Botão de Registrar
                 Button(action: {
-                    // Ação ao clicar no botão registrar
                 }) {
                     Text("Registrar")
                         .font(.headline)

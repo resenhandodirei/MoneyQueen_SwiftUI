@@ -34,7 +34,6 @@ struct FinancialTrendsView: View {
                     .foregroundColor(Color("wine"))
                     .padding(.top, 20)
                 
-                // Gráfico de tendência de despesas e receitas
                 Chart {
                     ForEach(expenseData) { data in
                         LineMark(
@@ -62,7 +61,6 @@ struct FinancialTrendsView: View {
                 .frame(height: 300)
                 .padding()
                 
-                // Análise resumida das tendências
                 VStack(alignment: .leading, spacing: 10) {
                     Text("Resumo das Tendências")
                         .font(.title2)
@@ -82,7 +80,6 @@ struct FinancialTrendsView: View {
             .navigationBarTitleDisplayMode(.inline)
         }
         .onChange(of: expenseData) { newValue in
-            // Ação de atualização ou lógica adicional ao observar mudanças em expenseData
             print("expenseData foi alterado!")
         }
     }

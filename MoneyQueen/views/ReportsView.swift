@@ -10,7 +10,7 @@ import Charts // Certifique-se de ter a biblioteca Charts instalada
 
 struct ReportsView: View {
     @State private var selectedDateRange: DateRange = .monthly // Intervalo de datas selecionado
-    @State private var showDetail = false // Controla a exibição de detalhes dos gastos
+    @State private var showDetail = false
     
     var body: some View {
         NavigationView {
@@ -24,17 +24,15 @@ struct ReportsView: View {
                     .font(.subheadline)
                     .foregroundColor(.gray)
                 
-                // Gráfico de Gastos Mensais
                 VStack(alignment: .leading) {
                     Text("Gastos Mensais")
                         .font(.headline)
                         .foregroundColor(Color("darkPink"))
                     
-                    MonthlySpendingChart() // Componente para o gráfico de gastos
+                    MonthlySpendingChart()
                         .frame(height: 200)
                 }
                 
-                // Resumo dos Gastos
                 VStack(alignment: .leading, spacing: 10) {
                     Text("Resumo dos Gastos")
                         .font(.headline)
@@ -53,7 +51,6 @@ struct ReportsView: View {
                 
                 Spacer()
                 
-                // Intervalo de Relatório
                 Picker("Período", selection: $selectedDateRange) {
                     ForEach(DateRange.allCases, id: \.self) { range in
                         Text(range.rawValue.capitalized).tag(range)
@@ -61,7 +58,6 @@ struct ReportsView: View {
                 }
                 .pickerStyle(SegmentedPickerStyle())
                 
-                // Botão para Detalhes dos Gastos
                 Button(action: {
                     showDetail.toggle()
                 }) {
@@ -76,7 +72,7 @@ struct ReportsView: View {
                 }
                 .padding(.horizontal)
                 .sheet(isPresented: $showDetail) {
-                    ExpenseDetailView() // Tela de detalhes dos gastos
+                    ExpenseDetailView()
                 }
             }
             .padding()

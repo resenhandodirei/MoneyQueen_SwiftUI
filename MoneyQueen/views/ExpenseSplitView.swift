@@ -13,19 +13,17 @@ struct ExpenseSplitView: View {
     @State private var includeTip: Bool = false
     @State private var tipPercentage: Double = 10
     @State private var result: String = ""
-    @State private var selectedTipOption = 10 // Para picker de gorjeta (10%, 15%, 20%)
+    @State private var selectedTipOption = 10
     
     var body: some View {
         NavigationView {
             VStack {
-                // Título da tela
                 Text("Dividir Despesa")
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .foregroundColor(Color("wine"))
                     .padding(.top, 20)
                 
-                // Campo para o valor total da despesa
                 HStack {
                     Text("Valor Total:")
                         .font(.headline)
@@ -38,7 +36,6 @@ struct ExpenseSplitView: View {
                 }
                 .padding()
                 
-                // Campo para o número de pessoas
                 HStack {
                     Text("Número de Pessoas:")
                         .font(.headline)
@@ -51,16 +48,14 @@ struct ExpenseSplitView: View {
                 }
                 .padding()
                 
-                // Toggle para incluir gorjeta com cor personalizada
                 Toggle(isOn: $includeTip) {
                     Text("Incluir Gorjeta")
                         .font(.headline)
                         .foregroundColor(.gray)
                 }
-                .toggleStyle(SwitchToggleStyle(tint: Color("darkPink"))) // Cor rosa no toggle
+                .toggleStyle(SwitchToggleStyle(tint: Color("darkPink")))
                 .padding(.horizontal)
                 
-                // Picker para a porcentagem da gorjeta (visível apenas se a opção estiver ativa)
                 if includeTip {
                     VStack {
                         Text("Porcentagem da Gorjeta:")
@@ -72,14 +67,13 @@ struct ExpenseSplitView: View {
                             Text("15%").tag(15)
                             Text("20%").tag(20)
                         }
-                        .pickerStyle(SegmentedPickerStyle()) // Estilo com linhas
+                        .pickerStyle(SegmentedPickerStyle())
                         .padding()
-                        .background(Color("darkPink").opacity(0.2)) // Cor de fundo rosa
+                        .background(Color("darkPink").opacity(0.2))
                         .cornerRadius(8)
                     }
                 }
                 
-                // Botão para calcular a divisão
                 Button(action: calculateSplit) {
                     Text("Calcular Divisão")
                         .font(.title2)
@@ -87,13 +81,12 @@ struct ExpenseSplitView: View {
                         .foregroundColor(.white)
                         .padding()
                         .frame(maxWidth: .infinity)
-                        .background(Color("darkPink"))  // Cor aplicada ao botão
+                        .background(Color("darkPink"))
                         .cornerRadius(12)
                         .shadow(radius: 5)
                 }
                 .padding()
                 
-                // Resultado da divisão
                 if !result.isEmpty {
                     Text(result)
                         .font(.title2)

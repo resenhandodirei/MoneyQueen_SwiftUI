@@ -18,14 +18,12 @@ struct FinancialGoalsView: View {
     var body: some View {
         NavigationView {
             VStack {
-                // Título
                 Text("Metas Financeiras")
                     .font(.title2)
                     .fontWeight(.bold)
                     .padding(.top)
-                    .foregroundColor(Color("darkPink")) // Alteração para rosa
+                    .foregroundColor(Color("darkPink"))
             
-                // Lista de Metas
                 List {
                     ForEach(goals) { goal in
                         GoalProgressView(goal: goal)
@@ -33,7 +31,6 @@ struct FinancialGoalsView: View {
                 }
                 .listStyle(PlainListStyle())
                 
-                // Botão para adicionar nova meta
                 Button(action: {
                     showingAddGoal = true
                 }) {
@@ -42,7 +39,7 @@ struct FinancialGoalsView: View {
                         .foregroundColor(.white)
                         .padding()
                         .frame(maxWidth: .infinity)
-                        .background(Color("darkPink")) // Alteração para rosa
+                        .background(Color("darkPink"))
                         .cornerRadius(12)
                         .shadow(radius: 5)
                         .padding(.horizontal)
@@ -70,7 +67,7 @@ struct GoalProgressView: View {
             Text(goal.title)
                 .font(.headline)
             ProgressView(value: progress)
-                .accentColor(Color("darkPink")) // Alteração para rosa
+                .accentColor(Color("darkPink"))
                 .padding(.vertical)
             HStack {
                 Text("Concluído: \(Int(progress * 100))%")
@@ -107,22 +104,22 @@ struct AddGoalView: View {
             Form {
                 Section(header: Text("Nome da Meta")) {
                     TextField("Ex: Viagem para Europa", text: $title)
-                        .foregroundColor(Color("darkPink")) // Cor rosa
-                        .accentColor(Color("darkPink")) // Cor rosa para o cursor
+                        .foregroundColor(Color("darkPink"))
+                        .accentColor(Color("darkPink"))
                 }
                 
                 Section(header: Text("Valor Alvo")) {
                     TextField("Ex: 10000", text: $targetAmount)
                         .keyboardType(.decimalPad)
-                        .foregroundColor(Color("darkPink")) // Cor rosa
-                        .accentColor(Color("darkPink")) // Cor rosa para o cursor
+                        .foregroundColor(Color("darkPink"))
+                        .accentColor(Color("darkPink"))
                 }
                 
                 Section(header: Text("Valor Atual")) {
                     TextField("Ex: 3000", text: $currentAmount)
                         .keyboardType(.decimalPad)
-                        .foregroundColor(Color("darkPink")) // Cor rosa
-                        .accentColor(Color("darkPink")) // Cor rosa para o cursor
+                        .foregroundColor(Color("darkPink"))
+                        .accentColor(Color("darkPink"))
                 }
                 
                 Button(action: addGoal) {
@@ -131,7 +128,7 @@ struct AddGoalView: View {
                         .foregroundColor(.white)
                         .padding()
                         .frame(maxWidth: .infinity)
-                        .background(Color("darkPink")) // Cor rosa
+                        .background(Color("darkPink"))
                         .cornerRadius(10)
                 }
                 .alert(isPresented: $showAlertSuccess) {
@@ -162,9 +159,9 @@ struct AddGoalView: View {
             let newGoal = FinancialGoal(title: title, targetAmount: target, currentAmount: current)
             goals.append(newGoal)
             dismiss()
-            showAlertSuccess = true // Exibe o alerta de sucesso
+            showAlertSuccess = true
         } else {
-            showAlertError = true // Exibe o alerta de erro
+            showAlertError = true 
         }
     }
 }

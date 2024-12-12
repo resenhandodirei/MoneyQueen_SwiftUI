@@ -10,7 +10,7 @@ struct CharityDonationsView: View {
     @State private var donationGoal: Double = 1000.0
     @State private var currentDonations: Double = 0.0
     @State private var donationAmount: Double = 0.0
-    @State private var donationList: [String: Double] = [:] // Nome da organização e valor doado
+    @State private var donationList: [String: Double] = [:]
     @State private var showAlert: Bool = false
     @State private var alertMessage: String = ""
     
@@ -24,7 +24,7 @@ struct CharityDonationsView: View {
                         Text("R$ \(donationGoal, specifier: "%.2f")")
                     }
                     Slider(value: $donationGoal, in: 100...10000, step: 100)
-                        .accentColor(Color("darkPink")) // Cor darkPink no Slider
+                        .accentColor(Color("darkPink"))
                         .padding(.horizontal)
                     
                     HStack {
@@ -34,7 +34,7 @@ struct CharityDonationsView: View {
                     }
                     
                     ProgressView(value: currentDonations, total: donationGoal)
-                        .accentColor(Color("darkPink")) // Cor darkPink na ProgressView
+                        .accentColor(Color("darkPink"))
                         .padding(.horizontal)
                     
                     Divider()
@@ -61,7 +61,7 @@ struct CharityDonationsView: View {
                             .foregroundColor(.white)
                             .padding()
                             .frame(maxWidth: .infinity)
-                            .background(Color("darkPink")) // Cor darkPink no botão
+                            .background(Color("darkPink")) 
                             .cornerRadius(10)
                     }
                     .padding(.horizontal)
@@ -100,27 +100,22 @@ struct CharityDonationsView: View {
         }
     }
 
-    // Função para adicionar uma doação
     func addDonation() {
-        // Verifica se o valor da doação é maior que zero
         guard donationAmount > 0 else {
             alertMessage = "O valor da doação precisa ser maior que zero."
             showAlert = true
             return
         }
         
-        // Nome genérico para a organização
         let organizationName = "Organização \(donationList.count + 1)"
         donationList[organizationName] = donationAmount
         currentDonations += donationAmount
         alertMessage = "Você doou R$ \(donationAmount) para \(organizationName)."
         showAlert = true
         
-        // Resetar o valor da doação
         donationAmount = 0.0
     }
     
-    // Função para resetar doações ao atingir a meta
     func resetDonations() {
         donationList.removeAll()
         currentDonations = 0.0

@@ -10,7 +10,6 @@ import SwiftUI
 struct HelpView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
-            // Título e Introdução
             Text("Ajuda e Suporte")
                 .font(.largeTitle)
                 .fontWeight(.bold)
@@ -20,7 +19,6 @@ struct HelpView: View {
                 .font(.subheadline)
                 .foregroundColor(.gray)
             
-            // Perguntas Frequentes
             List {
                 Section(header: Text("Perguntas Frequentes")
                             .font(.headline)
@@ -34,7 +32,6 @@ struct HelpView: View {
                     FAQRow(question: "Como editar meu perfil?", answer: "Vá até 'Informações Pessoais' no seu perfil e selecione 'Editar Informações'.")
                 }
                 
-                // Contato com o Suporte
                 Section(header: Text("Contato com Suporte")
                             .font(.headline)
                             .foregroundColor(Color("darkPink"))) {
@@ -45,7 +42,6 @@ struct HelpView: View {
                             .foregroundColor(.blue)
                     }
                     .onTapGesture {
-                        // Ação para enviar e-mail (implementação depende do ambiente)
                     }
                     
                     HStack {
@@ -55,11 +51,9 @@ struct HelpView: View {
                             .foregroundColor(.blue)
                     }
                     .onTapGesture {
-                        // Ação para realizar uma chamada telefônica (implementação depende do ambiente)
                     }
                 }
                 
-                // Links Úteis
                 Section(header: Text("Links Úteis")
                             .font(.headline)
                             .foregroundColor(Color("darkPink"))) {
@@ -78,7 +72,6 @@ struct HelpView: View {
     }
 }
 
-// Componente de linha para perguntas frequentes
 struct FAQRow: View {
     var question: String
     var answer: String

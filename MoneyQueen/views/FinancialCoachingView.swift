@@ -24,8 +24,7 @@ struct FinancialCoachingView: View {
         CoachingSession(title: "Economizando para Grandes Objetivos", description: "Saiba como poupar para grandes metas financeiras, como viagens, compra de um imóvel, ou aposentadoria.", duration: "50 min", icon: "house.fill", isBooked: false)
     ]
     
-    @State private var showingAlert = false // Para o alerta de agendamento
-    
+    @State private var showingAlert = false
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
@@ -52,7 +51,7 @@ struct FinancialCoachingView: View {
                         .padding(.top)
                     
                     Button(action: {
-                        showingAlert = true // Exibe o alerta quando o botão é pressionado
+                        showingAlert = true 
                     }) {
                         Text("Agendar Consulta Personalizada")
                             .font(.headline)

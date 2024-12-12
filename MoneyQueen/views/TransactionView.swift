@@ -47,7 +47,7 @@ struct TransactionView: View {
                 }
                 .listStyle(InsetGroupedListStyle())
                 .navigationTitle("Transações")
-                .navigationBarTitleDisplayMode(.inline) // Display the title inline
+                .navigationBarTitleDisplayMode(.inline) 
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button(action: {
@@ -63,7 +63,7 @@ struct TransactionView: View {
                 AddTransactionView(transactions: $transactions)
             }
         }
-        .accentColor(.darkPink) // This will affect the color of navigation bar items like the back button and plus icon
+        .accentColor(.darkPink)
     }
 
     private func deleteTransaction(at offsets: IndexSet) {

@@ -38,7 +38,7 @@ struct RetirementPlannerView: View {
                         Text("R$ \(currentSavings, specifier: "%.2f")")
                     }
                     Slider(value: $currentSavings, in: 0...1000000, step: 5000)
-                        .accentColor(.darkPink)  // Alteração para a cor darkPink
+                        .accentColor(.darkPink)
                         .padding(.horizontal)
 
                     HStack {
@@ -47,7 +47,7 @@ struct RetirementPlannerView: View {
                         Text("\(Int(yearsUntilRetirement)) anos")
                     }
                     Slider(value: $yearsUntilRetirement, in: 1...50, step: 1)
-                        .accentColor(.darkPink)  // Alteração para a cor darkPink
+                        .accentColor(.darkPink)
                         .padding(.horizontal)
 
                     HStack {
@@ -56,7 +56,7 @@ struct RetirementPlannerView: View {
                         Text("\(estimatedReturnRate, specifier: "%.1f")%")
                     }
                     Slider(value: $estimatedReturnRate, in: 1...15, step: 0.5)
-                        .accentColor(.darkPink)  // Alteração para a cor darkPink
+                        .accentColor(.darkPink)  
                         .padding(.horizontal)
                 }
                 .padding()

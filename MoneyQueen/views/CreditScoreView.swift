@@ -8,13 +8,12 @@
 import SwiftUI
 
 struct CreditScoreView: View {
-    @State private var creditScore: Int = 650 // Exemplo de valor inicial do score
-    private let maxScore = 850 // Máximo valor do score de crédito
+    @State private var creditScore: Int = 650
+    private let maxScore = 850
 
     var body: some View {
         NavigationView {
             VStack(spacing: 30) {
-                // Título e breve descrição
                 Text("Score de Crédito")
                     .font(.largeTitle)
                     .fontWeight(.bold)
@@ -26,15 +25,12 @@ struct CreditScoreView: View {
                     .multilineTextAlignment(.center)
                     .padding(.horizontal)
 
-                // Indicador de Score de Crédito
                 CreditScoreIndicator(creditScore: creditScore, maxScore: maxScore)
                     .padding(.vertical, 20)
 
-                // Análise personalizada do score
                 CreditScoreAnalysis(creditScore: creditScore)
                     .padding(.vertical, 20)
                 
-                // Dicas para melhorar o Score
                 VStack(alignment: .leading, spacing: 15) {
                     Text("Dicas para Melhorar Seu Score")
                         .font(.headline)
@@ -127,14 +123,12 @@ struct CreditScoreAnalysis: View {
                 .font(.headline)
                 .foregroundColor(Color("darkPink"))
             
-            // Texto de Feedback baseado no Score
             Text(analysisText)
                 .font(.body)
                 .foregroundColor(.primary)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal)
             
-            // Sugestões de Melhoria
             VStack(alignment: .leading, spacing: 10) {
                 Text("Ações para Melhorar Seu Score")
                     .font(.subheadline)
@@ -151,7 +145,6 @@ struct CreditScoreAnalysis: View {
         .padding()
     }
     
-    // Determina a análise do score
     private var analysisText: String {
         switch creditScore {
         case 0..<580:
@@ -167,7 +160,6 @@ struct CreditScoreAnalysis: View {
         }
     }
     
-    // Sugestões baseadas no score
     private var suggestions: [String] {
         switch creditScore {
         case 0..<580:
