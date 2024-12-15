@@ -8,18 +8,16 @@
 import SwiftUI
 
 struct StartView: View {
-    @State private var showingOnboarding = false // Controla o pop-up de introdução
+    @State private var showingOnboarding = false 
 
     var body: some View {
         ZStack {
-            // Gradiente de fundo
-            LinearGradient(gradient: Gradient(colors: [Color("wine"), Color("lightPink")]),
+            LinearGradient(gradient: Gradient(colors: [Color("darkPink")]),
                            startPoint: .topLeading,
                            endPoint: .bottomTrailing)
                 .ignoresSafeArea()
 
             VStack(spacing: 40) {
-                // Logo do App com o nome e a coroa posicionada
                 ZStack {
                     HStack(alignment: .center) {
                         Text("Money Queen")
@@ -28,7 +26,6 @@ struct StartView: View {
                             .foregroundColor(.white)
                     }
                     
-                    // Ícone da coroa como "chapeuzinho"
                     Image("icon")
                         .resizable()
                         .scaledToFit()
@@ -38,17 +35,16 @@ struct StartView: View {
                 }
                 .padding()
                 
-                // Botão de Acessar
                 Button(action: {
-                    showingOnboarding = true // Mostra a introdução ao clicar
+                    showingOnboarding = true
                 }) {
                     Text("Acessar")
                         .font(.title2)
                         .fontWeight(.semibold)
-                        .foregroundColor(.white)
+                        .foregroundColor(.darkPink)
                         .padding()
                         .frame(maxWidth: .infinity)
-                        .background(Color("darkPink"))
+                        .background(Color("nude"))
                         .cornerRadius(12)
                         .shadow(radius: 5)
                         .textCase(.lowercase)
@@ -57,7 +53,7 @@ struct StartView: View {
             }
             .padding()
         }
-        // Abre o Onboarding como uma sheet quando `showingOnboarding` é verdadeiro
+        
         .sheet(isPresented: $showingOnboarding) {
             OnboardingView(showingOnboarding: $showingOnboarding)
         }
@@ -101,7 +97,6 @@ struct OnboardingView: View {
             .clipShape(RoundedRectangle(cornerRadius: 20))
             .padding()
 
-            // Botão "Fechar" para finalizar introdução
             Button(action: {
                 showingOnboarding = false
             }) {
